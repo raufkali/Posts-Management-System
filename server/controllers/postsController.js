@@ -9,7 +9,7 @@ const sendError = (message, status, next) => {
 // Get all posts of the logged-in user
 const getAllposts = async (req, res, next) => {
   try {
-    const posts = await Posts.find();
+    const posts = await Posts.find().populate("userId", "fullname");
     if (!posts || posts.length === 0) {
       sendError("No posts found", 404, next);
       return;
