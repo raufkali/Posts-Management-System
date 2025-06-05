@@ -9,6 +9,19 @@ const sendError = (message, status, next) => {
 // Get all posts of the logged-in user
 const getAllposts = async (req, res, next) => {
   try {
+    const posts = await Posts.find();
+    if (!posts || posts.length === 0) {
+      sendError("No posts found", 404, next);
+      return;
+    }
+    res.status(200).json(posts);
+  } catch (error) {
+    next(error);
+  }
+};
+// Get all my posts
+const getAllMyPosts = async (req, res, next) => {
+  try {
     const posts = await Posts.find({ userId: req.user.userId });
     if (!posts || posts.length === 0) {
       sendError("No posts found", 404, next);
@@ -19,7 +32,6 @@ const getAllposts = async (req, res, next) => {
     next(error);
   }
 };
-
 // get posts of all other users
 const getRandomPosts = async (req, res, next) => {
   try {
@@ -125,6 +137,7 @@ const deletePost = async (req, res, next) => {
 
 module.exports = {
   getAllposts,
+  getAllMyPosts,
   createPost,
   getOnePost,
   updatePost,

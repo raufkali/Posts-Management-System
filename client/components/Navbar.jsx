@@ -1,12 +1,12 @@
+import Link from "next/link";
 import React from "react";
-
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid px-3">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" href="#">
           Post Manager
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -21,24 +21,24 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-link active" href="/">
+              <Link className="nav-link active" href="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/create">
+              <Link className="nav-link" href="/create">
                 Create Post
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/login">
+              <Link className="nav-link" href="/login">
                 Login
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/register">
+              <Link className="nav-link" href="/register">
                 Register
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
