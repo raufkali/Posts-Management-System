@@ -6,7 +6,8 @@ export default function HomePage() {
 
   const fetchPosts = async () => {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts/`);
+      console.log(process.env.NEXT_PUBLIC_API_URL);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/`);
       if (!res.ok) {
         console.error("Failed to fetch posts");
         return;

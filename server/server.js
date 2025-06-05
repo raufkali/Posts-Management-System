@@ -15,16 +15,16 @@ connectDB();
 //// middlewares
 // built-ins
 app.use(express.json());
-
-//my middlewares
-app.use("/api/users", require("./routes/userRoutes"));
-app.use("/api/posts", require("./routes/postsRoutes"));
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 );
+//my middlewares
+app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/posts", require("./routes/postsRoutes"));
+
 app.use(errorHandler);
 
 //// server
