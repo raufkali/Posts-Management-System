@@ -10,7 +10,7 @@ const postsSchema = new mongoose.Schema(
       type: String,
     },
     imageUrl: {
-      string,
+      type: String,
     },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
