@@ -1,4 +1,5 @@
 "use client";
+import PostCard from "@/components/PostCard";
 import { useEffect, useState } from "react";
 
 export default function HomePage() {
@@ -24,22 +25,21 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="container mt-4">
-      <h2>All Posts</h2>
-      {posts.length === 0 ? (
-        <p>No posts found.</p>
-      ) : (
-        posts.map((post) => (
-          <div className="row mb-3" key={post._id}>
-            <div className="col-12 card border-0 shadow-sm">
-              <div className="card-body">
-                <h3 className="card-title">{post.title}</h3>
-                <p className="card-text">{post.description}</p>
-              </div>
-            </div>
-          </div>
-        ))
-      )}
+    <div className="container mt-4 flex-column">
+      <div className="row text-center">
+        <h2>All Posts</h2>
+        {posts.length === 0 ? (
+          <p>No posts found.</p>
+        ) : (
+          posts.map((post) => (
+            <PostCard
+              key={post._id}
+              title={post.title}
+              description={post.description}
+            />
+          ))
+        )}
+      </div>
     </div>
   );
 }
