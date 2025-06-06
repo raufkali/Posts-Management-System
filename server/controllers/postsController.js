@@ -53,13 +53,19 @@ const getRandomPosts = async (req, res, next) => {
 const createPost = async (req, res, next) => {
   try {
     const { title, description } = req.body;
+
     if (!title) {
       sendError("Title is required", 400, next);
       return;
     }
+
+    // Check if file was uploaded
+    const imageUrl = req.file ? req.file.path : null;
+
     const newPost = await Posts.create({
       title,
       description,
+      imageUrl, // save image path in DB
       userId: req.user.userId,
     });
 

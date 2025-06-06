@@ -9,6 +9,9 @@ const postsSchema = new mongoose.Schema(
     description: {
       type: String,
     },
+    imageUrl: {
+      string,
+    },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

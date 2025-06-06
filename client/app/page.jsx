@@ -25,8 +25,8 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="container mt-4 flex-column">
-      <div className="row text-center">
+    <div className="container-fluid mt-4 flex-column">
+      <div className="row text-center d-flex align-items-center justify-content-center">
         <h2>All Posts</h2>
         {posts.length === 0 ? (
           <p>No posts found.</p>
@@ -34,6 +34,7 @@ export default function HomePage() {
           posts.map((post) => (
             <PostCard
               key={post._id}
+              username={post.userId.fullname}
               title={post.title}
               description={post.description}
             />

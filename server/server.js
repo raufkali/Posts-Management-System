@@ -5,6 +5,8 @@ const connectDB = require("./config/dbConnection");
 const errorHandler = require("./middlewares/errorHandler");
 const authMiddleware = require("./middlewares/authMiddleware");
 const cors = require("cors");
+const multer = require("multer");
+const path = require("path");
 
 const app = express();
 const port = process.env.PORT || 5001;
