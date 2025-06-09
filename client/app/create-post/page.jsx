@@ -55,12 +55,15 @@ const CreatePost = () => {
     }
 
     try {
+      const token = localStorage.getItem("token"); // Get token from storage
+
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          // Don't set Content-Type, the browser will do it for you
+          Authorization: `Bearer ${token}`,
         },
-        body: data,
+        body: data, // Pass FormData directly
       });
 
       const result = await res.json();

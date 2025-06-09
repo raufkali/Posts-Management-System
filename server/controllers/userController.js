@@ -81,15 +81,7 @@ const registerUser = async (req, res, next) => {
   }
 };
 
-const verifyUser = async (req, res, next) => {
-  try {
-    const result = await fetch;
-  } catch (error) {
-    next(error);
-  }
-};
 module.exports = {
   loginUser,
   registerUser,
-  verifyUser,
 };

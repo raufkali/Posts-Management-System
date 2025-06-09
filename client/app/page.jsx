@@ -38,8 +38,8 @@ export default function HomePage() {
               title={post.title}
               likes={post.likes}
               description={post.description}
-              imageUrl={post.imageUrl} // make sure backend sends this field
-              createdAt={post.createdAt} // make sure backend sends this field
+              imageUrl={post.imageUrl}
+              createdAt={post.createdAt}
             />
           ))}
         </div>
