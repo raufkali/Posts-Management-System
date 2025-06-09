@@ -12,7 +12,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Navbar />
-        {children}
+        <div className="container ">
+          <div className="row">
+            <div className="col-6 mx-auto bg-light">{children}</div>
+          </div>
+        </div>
       </body>
     </html>
   );

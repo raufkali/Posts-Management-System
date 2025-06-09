@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start Client",
+            "type": "shell",
+            "command": "npm run dev",
+            "options": {
+                "cwd": "${workspaceFolder}/client"
+            },
+            "group": "build",
+            "presentation": {
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Start Server",
+            "type": "shell",
+            "command": "npm start",
+            "options": {
+                "cwd": "${workspaceFolder}/server"
+
+            },"group": "build",
+            "presentation": {
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Start Both",
+            "dependsOn": [
+                "Start Client",
+                "Start Server"
+            ],
+            "dependsOrder": "parallel",
+            "problemMatcher": []
+        }
+    ]
+}

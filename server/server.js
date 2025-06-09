@@ -26,6 +26,7 @@ app.use(
 //my middlewares
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/posts", require("./routes/postsRoutes"));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(errorHandler);
 

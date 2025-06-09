@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className=" navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container-fluid px-3">
         <Link className="navbar-brand" href="#">
           Post Manager
@@ -26,7 +26,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/create">
+              <Link className="nav-link" href="/create-post">
                 Create Post
               </Link>
             </li>

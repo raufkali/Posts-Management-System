@@ -7,7 +7,6 @@ export default function HomePage() {
 
   const fetchPosts = async () => {
     try {
-      console.log(process.env.NEXT_PUBLIC_API_URL);
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/`);
       if (!res.ok) {
         console.error("Failed to fetch posts");
@@ -25,22 +24,25 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="container-fluid mt-4 flex-column">
-      <div className="row text-center d-flex align-items-center justify-content-center">
-        <h2>All Posts</h2>
-        {posts.length === 0 ? (
-          <p>No posts found.</p>
-        ) : (
-          posts.map((post) => (
+    <div className="container-fluid mt-4">
+      <h2 className="text-center mb-4">All Posts</h2>
+
+      {posts.length === 0 ? (
+        <p className="text-center">No posts found.</p>
+      ) : (
+        <div className="row justify-content-center">
+          {posts.map((post) => (
             <PostCard
               key={post._id}
-              username={post.userId.fullname}
+              username={post.userId?.fullname || "Unknown User"}
               title={post.title}
               description={post.description}
+              imageUrl={post.imageUrl} // make sure backend sends this field
+              createdAt={post.createdAt} // make sure backend sends this field
             />
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

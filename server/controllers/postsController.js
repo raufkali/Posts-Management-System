@@ -60,7 +60,7 @@ const createPost = async (req, res, next) => {
     }
 
     // Check if file was uploaded
-    const imageUrl = req.file ? req.file.path : null;
+    const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
 
     const newPost = await Posts.create({
       title,
