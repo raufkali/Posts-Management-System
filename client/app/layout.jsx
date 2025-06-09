@@ -12,9 +12,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Navbar />
-        <div className="container ">
-          <div className="row">
-            <div className="col-6 mx-auto bg-light">{children}</div>
+        <div className="container mt-5">
+          <div className="row ">
+            <div className="col-8 mx-auto bg-light">{children}</div>
           </div>
         </div>
       </body>

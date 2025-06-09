@@ -26,6 +26,17 @@
             }
         },
         {
+            "label": "Git Push",
+            "type": "shell",
+            "command": "git push",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "panel": "dedicated",
+            }
+        },
+        {
             "label": "Start Both",
             "dependsOn": [
                 "Start Client",

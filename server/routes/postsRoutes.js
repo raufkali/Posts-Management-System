@@ -8,11 +8,13 @@ const {
   updatePost,
   deletePost,
   getRandomPosts,
+  deleteAllPosts,
 } = require("../controllers/postsController.js");
 const authenticate = require("../middlewares/authMiddleware.js");
 const upload = require("../middlewares/uploadHandler.js");
 
 router.get("/", getAllposts);
+router.delete("/", authenticate, deleteAllPosts);
 router.post("/", authenticate, upload.single("image"), createPost);
 router.get("/random", authenticate, getRandomPosts);
 router.get("/myposts", authenticate, getAllMyPosts);

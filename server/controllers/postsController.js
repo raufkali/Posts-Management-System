@@ -141,6 +141,20 @@ const deletePost = async (req, res, next) => {
   }
 };
 
+// Delete all posts
+const deleteAllPosts = async (req, res, next) => {
+  try {
+    const result = await Posts.deleteMany();
+    res.status(200).json({
+      message: "All posts have been deleted successfully.",
+      deletedCount: result.deletedCount,
+    });
+  } catch (error) {
+    next(error);
+    return;
+  }
+};
+
 module.exports = {
   getAllposts,
   getAllMyPosts,
@@ -149,4 +163,5 @@ module.exports = {
   updatePost,
   deletePost,
   getRandomPosts,
+  deleteAllPosts,
 };

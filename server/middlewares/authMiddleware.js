@@ -8,16 +8,28 @@ const authMiddleware = async (req, res, next) => {
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res.status(401).json({
-        success: false,
-        message: "Authorization token missing or malformed",
-      });
+      return res
+        .status(400)
+        .json({ success: false, message: "Token not provided" });
     }
 
     const token = authHeader.split(" ")[1];
-    const decoded = jwt.verify(token, SECRET_KEY);
 
-    req.user = decoded;
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (err && err.name === "TokenExpiredError") {
+        return res
+          .status(401)
+          .json({ success: false, message: "Token expired" });
+      }
+
+      if (err) {
+        return res
+          .status(401)
+          .json({ success: false, message: "Invalid token" });
+      }
+
+      return res.status(200).json({ success: true, message: "Token is valid" });
+    });
     next();
   } catch (error) {
     res.status(401).json({

@@ -36,6 +36,7 @@ export default function HomePage() {
               key={post._id}
               username={post.userId?.fullname || "Unknown User"}
               title={post.title}
+              likes={post.likes}
               description={post.description}
               imageUrl={post.imageUrl} // make sure backend sends this field
               createdAt={post.createdAt} // make sure backend sends this field

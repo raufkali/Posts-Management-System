@@ -1,7 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const CreatePost = () => {
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -11,6 +14,21 @@ const CreatePost = () => {
   const [previewImage, setPreviewImage] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
+  const [loading, setLoading] = useState(true); // Token validation loading
+
+  // Token validation
+  useEffect(() => {
+    const verifyToken = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        router.push("/login");
+        return;
+      }
+      setLoading(false);
+    };
+
+    verifyToken();
+  }, [router]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,8 +58,7 @@ const CreatePost = () => {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, {
         method: "POST",
         headers: {
-          // Do NOT set Content-Type manually when using FormData
-          Authorization: `Bearer ${localStorage.getItem("token")}`, // optional if auth needed
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: data,
       });
@@ -62,6 +79,10 @@ const CreatePost = () => {
       setIsSubmitting(false);
     }
   };
+
+  if (loading) {
+    return <p className="text-center mt-5">🔐 Verifying user...</p>;
+  }
 
   return (
     <div className="container mt-5 mb-5">

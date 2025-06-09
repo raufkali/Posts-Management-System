@@ -7,9 +7,16 @@ import {
   FaBookmark,
 } from "react-icons/fa";
 
-const PostCard = ({ username, title, description, imageUrl, createdAt }) => {
+const PostCard = ({
+  username,
+  title,
+  likes,
+  description,
+  imageUrl,
+  createdAt,
+}) => {
   const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(Math.floor(Math.random() * 100)); // placeholder count
+  const [likeCount, setLikeCount] = useState(likes); // placeholder count
   const [comments, setComments] = useState([]);
   const [commentInput, setCommentInput] = useState("");
 
